@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+<body class="text-center">
+
+    <h3>Usuarios</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Clave</th>
+                <th>Website</th>
+                <th>Detalles</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                
+                <!--
+                <td>{{ user.password }}</td>
+                -->
+                <td> ***** </td>
+                <td>{{ user.website }}</td>
+                <td>{{ user.details }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">Ver</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Registros no encontrados</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_new') }}">Crear nuevo</a>
+
+    <body>
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacto index{% endblock %}
+{% block body %}
+<body class="text-center">
+    <h1>Contacto</h1>
+    <h3>Lista de mensajes enviados</h3>
+    <div class="container">
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Asunto</th>
+                <th>Mensaje</th>
+                <th>Fecha</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contacto in contactos %}
+            <tr>
+                <td>{{ contacto.id }}</td>
+                <td>{{ contacto.email }}</td>
+                <td>{{ contacto.asunto }}</td>
+                <td>{{ contacto.mensaje }}</td>
+                <td>{{ contacto.fecha ? contacto.fecha|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('contacto_show', {'id': contacto.id}) }}">Mostrar</a>
+                    <a href="{{ path('contacto_edit', {'id': contacto.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div  class="container">
+          <a href="{{ path('contacto_new') }}">Crear nuevo</a>
+          </div>
+</body>
+{% endblock %}

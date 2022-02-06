@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block body %}
+<body class="text-center">
+    <h1>Contacto</h1>
+
+    <table class="table">
+        <tbody>
+            
+            <tr>
+                <th>Email</th>
+                <td>{{ contacto.email }}</td>
+            </tr>
+            <tr>
+                <th>Asunto</th>
+                <td>{{ contacto.asunto }}</td>
+            </tr>
+            <tr>
+                <th>Mensaje</th>
+                <td>{{ contacto.mensaje }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ contacto.fecha ? contacto.fecha|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contacto_index') }}">Ver listado</a>
+
+    <a href="{{ path('contacto_edit', {'id': contacto.id}) }}">Editar</a>
+
+    {{ include('contacto/_delete_form.html.twig') }}
+{% endblock %}

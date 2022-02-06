@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Principal index{% endblock %}
+
+{% block body %}
+    <h1>Blog App</h1>
+
+    <table class="table">
+        <!--<thead>
+            <tr>
+                <th>Id</th>
+                <th>Blog</th>
+                <th>Usuario</th>
+                <th>Fecha</th>
+                <th>actions</th>
+            </tr>
+        </thead>-->
+        <tbody>
+        {% for principal in principals %}
+            <tr>
+                <td>{{ principal.id }}</td>
+                <td>{{ principal.Blog }}</td>
+                <td>{{ principal.Usuario }}</td>
+                <td>{{ principal.fecha ? principal.fecha|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('principal_show', {'id': principal.id}) }}">show</a>
+                    <a href="{{ path('principal_edit', {'id': principal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('principal_new') }}">Create new</a>
+{% endblock %}

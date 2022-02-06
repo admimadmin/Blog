@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body %}
+
+    <body class="text-center">
+    <h1>Crear nuevo articulo</h1>
+
+    {{ include('article/_form.html.twig') }}
+
+    <a href="{{ path('article_index') }}">Ver listado</a>
+{% endblock %}

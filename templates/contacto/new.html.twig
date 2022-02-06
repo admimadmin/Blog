@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contacto{% endblock %}
+
+{% block body %}
+<body class="text-center">
+    <h1>Crear mensaje</h1>
+
+    <div class="container">  
+        {{ include('contacto/_form.html.twig') }}
+    </div>
+    <div class="row">                
+        <div class="col-sm"><a href="{{ path('contacto_index') }}">Ver mensajes enviados</a></div>
+    </div>
+
+</body>    
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+    <body class="text-center">
+    <h1>Blog</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ article.user }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ article.nombre }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                   
+                        {{ article.contenido }}
+                    
+                </td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ article.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ article.fecha ? article.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_index') }}">Ver listado</a>
+
+    <a href="{{ path('article_edit', {'id': article.id}) }}">Editar</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}
